@@ -15,22 +15,24 @@ using namespace std;
 typedef long long int i64;
 
 int main() {
-   i64 n, t, i, k;
+   i64 t;
+   int n, k, sg, p;
    // problem state fast I/O
    char str[123456], mov;
    while(gets(str)){
-      sscanf(str,"%lld %lld %c",&n,&t,&mov);
+      sscanf(str,"%d %lld %c",&n,&t,&mov);
       gets(str);
       puts(str);
       gets(str);
-      n = (n << 1) + 1LL;
+      t = t % (i64) n;
+      k = t;
       t = (t << 1) % n;
-      i = k = (mov == 'L') ? t : n-t-1LL;   
-      if(k==0) i = k = n-1LL;
-      //printf("n: %lld, t: %lld k: %lld\n",n,t,k);
-      while(i < n) putchar(str[i++]);
-      i = 1LL;
-      while(i < k) putchar(str[i++]);
+      sg = (mov == 'L') ? 1 : -1;   
+      for(int i=0; i<n; ++i) {
+         p = ((i + sg*k)+n) % n;
+         p = (p<<1) + 1;
+         printf("|%c",str[p]);
+      }
       puts("|");
       gets(str);
       puts(str);
