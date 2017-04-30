@@ -1,4 +1,4 @@
-## [Acomoda el número](https://omegaup.com/arena/problem/AcomodandoOMI#problems)
+## [Collar](https://omegaup.com/arena/problem/necklace#problems)
 
 ### Descripción
     Daena tenía un collar con cuentas muy coloridas. Cada par de cuentas consecutivas
