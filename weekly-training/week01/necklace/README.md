@@ -15,9 +15,7 @@
 * 1 ≤ color ≤ 50
 
 ### Análisis
-El problema se puede modelar como un grafo, donde cada color representa un nodo, despés de hacer este modelado nos damos cuenta que la pregunta es en realidad encontrar un recorrido de Euler[^1].
-
-[^1]: [Wikipedia Entry](https://en.wikipedia.org/wiki/Eulerian_path).
+El problema se puede modelar como un grafo, donde cada color representa un nodo, despés de hacer este modelado nos damos cuenta que la pregunta es en realidad encontrar un [Recorrido de Euler](https://en.wikipedia.org/wiki/Eulerian_path).
 
 
 ### Código
