@@ -1,9 +1,10 @@
 ## [Acomoda el número](https://omegaup.com/arena/problem/AcomodandoOMI#problems)
 
 ### Descripción
-```
-Tienes una lista desordenada con N números distintos los cuales tienen valores entre 0 y M. Llamemos al primer número de esta lista a0. Debes ordenar los números de la lista y ver en qué posición queda el número a0.
-```
+    Tienes una lista desordenada con N números distintos los cuales tienen valores entre 0 y M.
+    Llamemos al primer número de esta lista a0. Debes ordenar los números de la lista y ver en 
+    qué posición queda el número a0.
+
 
 ### Límites
 * 1< N ≤ 2000000
