@@ -1,11 +1,12 @@
-#### Week 15
+## Week 15
 
 Para esta semana los dos problemas propuestos nos enseñarán a combinar lo mejor de dos técnicas para resolución de problemas: **Programación dinámica** y **Greedy**.
 
-##### 1.- [Sherlock & Cost](https://www.hackerrank.com/challenges/sherlock-and-cost)
+### 1.- [Sherlock & Cost](https://www.hackerrank.com/challenges/sherlock-and-cost)
+#### Problema:
 Lo primero es entender el problema: Se nos pide construir una secuencia **A = {A1, A2, A3, ..., An}** donde cada **Ai** puede ser un número natural entre **1** y **Bi** de tal manera que la sumatoria del valor absoluto de la diferencia de los los elementos continuos de **A** sea la máxima.
 
-Ahora algunas observaciones:
+#### Observaciones:
 
 * Para el caso cuando **n=1**: No importa que valor del rango **[1,B1]** elijamos el resultado es **0**.
 * Cuando **n=2**: podemos realizar **B1xB2** parejas, sin embargo aquellas que pueden maximizar la diferencia se encuentran en los extremos, es decir **S = max(|1-B2|, |B1-1|)** (*Greedy*).
@@ -15,8 +16,10 @@ Ahora algunas observaciones:
   * **dp(i,1)=max(dp(i-1,0)+b_{i}-1, dp(i-1,1)+|b_{i}-b_{i-1}|)**
 * Hay que notar el truco en la reducción de la segunda parte del estado, un **0** indica que el valor de **A** en la posición **i** es **1**, y un **1** que su valor será igual al valor de **Bi**.
 
-#### Solución (Código)
+#### Solución:
 ```cpp
+  scanf("%d",&n);
+  memset(dp,0,sizeof dp);
   now = 1, old=0;
   for(int i=1; i<=n; ++i) {
     scanf("%d",&b[i]);
@@ -25,6 +28,7 @@ Ahora algunas observaciones:
     dp[now][1] = max(dp[old][0]+b[i]-1, dp[old][1]+abs(b[i]-b[i-1]));
     swap(old,now);
   }
+  printf("%d\n",max(dp[old][0],dp[old][1]));
 ```
 
 
