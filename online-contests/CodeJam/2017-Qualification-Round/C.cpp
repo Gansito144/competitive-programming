@@ -1,31 +1,36 @@
 #include <iostream>
-#include <queue>
 #include <algorithm>
-#include <vector>
-#include <stdio.h>
+#include <map>
 
 using namespace std;
-
-priority_queue< int, vector<int> > PQ;
+using i64 = long long int;
 
 int main() {
-  int tests, N, K, gap, a, b;
+  int tests;
+  i64 N, K, gap, a, b, cnt, total;
   
-  scanf("%d",&tests);
+  cin >> tests;
   for(int tc=1; tc<= tests; ++tc) {
-    scanf("%d %d",&N,&K);
-    while(!PQ.empty()) PQ.pop();
-    PQ.push(N);
-    while(--K) {
-      gap = PQ.top();
-      PQ.pop();
-      PQ.push(gap >> 1);
-      PQ.push((gap-1) >> 1);
+    cin >> N >> K;
+    map <i64, i64> PQ;
+    PQ[N] = 1LL;
+    total = 0LL;
+    while(true) {
+      tie(gap, cnt) = *prev(PQ.end());
+      PQ.erase(prev(PQ.end()));
+      if (total + cnt >= K)
+      {
+        a = gap >> 1;
+        --gap;
+        b = gap >> 1;
+        break;
+      }
+      PQ[gap >> 1] += cnt;
+      --gap;
+      PQ[gap >> 1] += cnt;
+      total += cnt;
     }
-    gap = PQ.top();
-    a = gap >> 1;
-    b = (gap-1) >> 1;
-    printf("Case #%d: %d %d\n",tc,a,b);
+    cout << "Case #" << tc << ": " << a << " " << b << endl; 
   }
   return 0;
 }
