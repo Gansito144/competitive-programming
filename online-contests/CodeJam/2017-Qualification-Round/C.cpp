@@ -18,16 +18,12 @@ int main() {
     while(true) {
       tie(gap, cnt) = *prev(PQ.end());
       PQ.erase(prev(PQ.end()));
+      a = gap >> 1; --gap;
+      b = gap >> 1;
       if (total + cnt >= K)
-      {
-        a = gap >> 1;
-        --gap;
-        b = gap >> 1;
         break;
-      }
-      PQ[gap >> 1] += cnt;
-      --gap;
-      PQ[gap >> 1] += cnt;
+      PQ[ a ] += cnt;
+      PQ[ b ] += cnt;
       total += cnt;
     }
     cout << "Case #" << tc << ": " << a << " " << b << endl; 
