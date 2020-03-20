@@ -23,38 +23,42 @@ string solve(const vector<int> &cards, int target) {
         for (const auto& [A, vA] : sol[a]) {
           for (const auto& [B, vB] : sol[b]) {
             // Addition
-            if (sol[a^b].count(A+B) == 0)
-							sol[a^b][A+B] = "(" + vA + "+" + vB + ")";
-						// Multiplication
-						if (sol[a^b].count(A*B) == 0)
-							sol[a^b][A*B] = "(" + vA + "*" + vB + ")";
-						// Substraction
-						if (A >= B && sol[a^b].count(A-B) == 0)
-							sol[a^b][A-B] = "(" + vA + "-" + vB + ")";
-						// Division
-						if (B && A % B == 0 && sol[a^b].count(A/B) == 0)
-							sol[a^b][A/B] = "(" + vA + "/" + vB + ")";
-					}
+            if (sol[a^b].count(A+B) == 0) {
+              sol[a^b][A+B] = "(" + vA + "+" + vB + ")";
+            }
+            // Multiplication
+            if (sol[a^b].count(A*B) == 0) {
+              sol[a^b][A*B] = "(" + vA + "*" + vB + ")";
+            }
+            // Substraction
+            if (A >= B && sol[a^b].count(A-B) == 0) {
+              sol[a^b][A-B] = "(" + vA + "-" + vB + ")";
+            }
+            // Division
+            if (B && A % B == 0 && sol[a^b].count(A/B) == 0) {
+              sol[a^b][A/B] = "(" + vA + "/" + vB + ")";
+            }
+          }
 				}
       }
     }
   }
 
   // Check if there is solution.
-	if (sol[(1<<N)-1].count(target) == 0) {
-		sol[(1<<N)-1][target] = "There is no solution! :(";
-  } else {
-		sol[(1<<N)-1][target] += " = " + to_string(target);
-  }
-	
-	return sol[(1<<N)-1][target];
+ if (sol[(1<<N)-1].count(target) == 0) {
+   sol[(1<<N)-1][target] = "There is no solution! :(";
+ } else {
+   sol[(1<<N)-1][target] += " = " + to_string(target);
+ }
+
+ return sol[(1<<N)-1][target];
 }
 
 int main() {
-	// {4, 10, 15, 15, 19}; // 11
+  // {4, 10, 15, 15, 19}; // 11
   // {5, 11, 14, 15, 21}; // 12
-	vector <int> cards(5);
-	int target;
+  vector <int> cards(5);
+  int target;
   while (true) {
     for (int i=0; i<5; ++i) {
       cout << "card["<< i <<"] : ";
@@ -62,8 +66,8 @@ int main() {
     }
     cout << "target : ";
     cin >> target;
-	  cout << "\n" << solve(cards, target) << endl;
+	  cout << "\n" << solve(cards, target) << "\n\n";
   }
-	return 0;
+  return 0;
 }
 
